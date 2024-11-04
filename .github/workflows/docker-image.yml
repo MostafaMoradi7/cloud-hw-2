@@ -23,8 +23,8 @@ jobs:
 
       - name: Build and Tag Docker image
         run: |
-          docker build -t CLOUD_HW2 .
-          docker tag CLOUD_HW2 ${{ secrets.DOCKER_USERNAME }}/CLOUD_HW2:latest
+          docker build -t cloud_hw2 .
+          docker tag cloud_hw2 ${{ secrets.DOCKER_USERNAME }}/cloud_hw2:latest
 
       - name: Push Docker image to Docker Hub
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/CLOUD_HW2:latest
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/cloud_hw2:latest
