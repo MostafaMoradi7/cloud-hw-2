@@ -1,0 +1,29 @@
+services:
+  web:
+    build:
+      context: .
+    image: cloud_web_2
+    container_name: web
+    env_file: .env
+    ports:
+      - "${DJANGO_PORT}:8000"
+    networks:
+      - cloud_web
+
+  redis:
+    image: redis:6-alpine
+    container_name: redis_cloud
+    ports:
+      - "${REDIS_PORT}:6379"
+    networks:
+      - cloud_web
+    volumes:
+      - ./redis_data:/data
+
+networks:
+  cloud_web:
+    driver: bridge
+
+volumes:
+  redis_data:
+    driver: local
